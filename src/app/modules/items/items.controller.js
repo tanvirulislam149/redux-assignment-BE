@@ -9,3 +9,12 @@ exports.getAllItems = async (req, res, next) => {
     res.status(500).send({ message: error.message });
   }
 }
+
+exports.AddNewItem = async (req, res, next) => {
+  try {
+    const data = req.body;
+    console.log(data);
+  } catch (error) {
+
+  }
+}

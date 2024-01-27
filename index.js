@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 var jwt = require('jsonwebtoken');
 const itemsRoute = require("./src/app/modules/items/items.route")
+const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute")
 
 
 // middleware
@@ -22,6 +23,7 @@ main();
 
 // Routes
 app.use("/items", itemsRoute)
+app.use("/soldItems", soldItemsRoute)
 
 
 // jwt token route

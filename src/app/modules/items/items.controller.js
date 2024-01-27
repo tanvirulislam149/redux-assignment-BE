@@ -46,3 +46,26 @@ exports.UpdateItem = async (req, res, next) => {
     res.status(500).send({ message: error.message });
   }
 }
+
+exports.getFilterKey = async (req, res, next) => {
+  try {
+    const result = await ItemsModel.aggregate([
+      {
+        $group:
+        {
+          _id: null,
+          brand: { $addToSet: '$brand' },
+          category: { $addToSet: '$category' },
+          interface: { $addToSet: '$interface' },
+          condition: { $addToSet: '$condition' },
+          compatibility: { $addToSet: '$compatibility' },
+          capacity: { $addToSet: '$capacity' },
+          price: { $addToSet: '$price' },
+        }
+      }
+    ])
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}

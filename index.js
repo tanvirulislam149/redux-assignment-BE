@@ -25,7 +25,6 @@ main();
 app.use("/items", itemsRoute)
 app.use("/soldItems", soldItemsRoute)
 
-
 // jwt token route
 app.post("/getToken", async (req, res) => {
   const user = req.body;

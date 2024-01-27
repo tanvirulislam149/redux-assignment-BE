@@ -16,4 +16,13 @@ exports.postSoldItem = async (req, res, next) => {
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
-} 
+}
+
+exports.getSoldItems = async (req, res, next) => {
+  try {
+    const result = await SoldItemsModel.find({});
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}

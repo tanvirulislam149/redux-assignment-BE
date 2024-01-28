@@ -6,7 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 var jwt = require('jsonwebtoken');
 const itemsRoute = require("./src/app/modules/items/items.route")
-const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute")
+const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute");
+const verifyJWT = require('./src/utils/verifyJWT');
 
 
 // middleware
@@ -28,6 +29,10 @@ main();
 // Routes
 app.use("/items", itemsRoute)
 app.use("/soldItems", soldItemsRoute)
+app.use("/soldItems/getAllItems", verifyJWT, async (req, res) => {
+  const result = await ItemsModel.find({});
+  res.send({ result });
+})
 
 // jwt token route
 app.post("/getToken", async (req, res) => {

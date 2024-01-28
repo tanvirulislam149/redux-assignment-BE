@@ -36,6 +36,14 @@ exports.DeleteItem = async (req, res, next) => {
     res.status(500).send({ message: error.message });
   }
 }
+exports.BulkDeleteItems = async (req, res, next) => {
+  try {
+    const result = await ItemsModel.deleteMany({ _id: { $in: req.body.data } });
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}
 exports.UpdateItem = async (req, res, next) => {
   try {
     const { _id, name, brand, category, condition, compatibility, color, capacity, form_factor, interface, price, quantity } = req.body;

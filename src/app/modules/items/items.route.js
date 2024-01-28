@@ -6,6 +6,7 @@ const itemsController = require("./items.controller");
 router.get("/getAllItems", itemsController.getAllItems);
 router.post("/addItem", itemsController.AddNewItem);
 router.delete("/deleteItem", itemsController.DeleteItem);
+router.delete("/bulkDeleteItem", itemsController.BulkDeleteItems);
 router.put("/updateItem", itemsController.UpdateItem);
 router.get("/filterKey", itemsController.getFilterKey)
 router.get("/getOneItem/:_id", itemsController.getOneItem);

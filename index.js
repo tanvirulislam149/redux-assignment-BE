@@ -8,12 +8,12 @@ var jwt = require('jsonwebtoken');
 const itemsRoute = require("./src/app/modules/items/items.route")
 const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute")
 
-
+let corsOptions = {
+  origin: ['https://redux-assignment-f3aa7.web.app/'],
+}
 // middleware
 app.use(express.json());
-app.use(cors({
-  origin: ['https://redux-assignment-f3aa7.web.app/'],
-}))
+app.use(cors(corsOptions))
 
 async function main() {
   const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ejazoj4.mongodb.net/redux-assignment?retryWrites=true&w=majority`;

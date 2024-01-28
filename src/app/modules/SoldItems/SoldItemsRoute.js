@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const SoldItemsController = require("./soldItemsController")
+const SoldItemsController = require("./soldItemsController");
+const verifyJWT = require("../../../utils/verifyJWT");
 
-router.post("/postSoldItem", SoldItemsController.postSoldItem)
-router.get("/getSoldItems", SoldItemsController.getSoldItems)
+router.post("/postSoldItem", verifyJWT, SoldItemsController.postSoldItem)
+router.get("/getSoldItems", verifyJWT, SoldItemsController.getSoldItems)
 
 
 module.exports = router;

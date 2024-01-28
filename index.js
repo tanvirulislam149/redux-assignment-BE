@@ -11,7 +11,11 @@ const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute")
 
 // middleware
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
+  credentials: true,
+}))
 
 async function main() {
   const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ejazoj4.mongodb.net/redux-assignment?retryWrites=true&w=majority`;

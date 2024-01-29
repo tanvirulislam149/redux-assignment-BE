@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require("express");
-var cors = require('cors')
+const cors = require("cors")
 require('dotenv').config()
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,7 +11,7 @@ const soldItemsRoute = require("./src/app/modules/SoldItems/SoldItemsRoute")
 
 // middleware
 app.use(express.json());
-app.use(cors({ origin: '*' }))
+app.use(cors())
 
 async function main() {
   const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ejazoj4.mongodb.net/redux-assignment?retryWrites=true&w=majority`;
